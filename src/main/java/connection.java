@@ -14,40 +14,32 @@ public class connection {
     private static String PASSWORD;
 
     public void createConnection() throws IOException {
-        while (IP=="") {
-            bw.write("Enter IP: ");
-            bw.flush();
-            IP = br.readLine();
-        }
+        bw.write("Enter IP: ");
+        bw.flush();
+        IP = br.readLine();
 
-        while (DB=="") {
-            bw.write("Enter DB: ");
-            bw.flush();
-            DB = br.readLine();
-        }
+        bw.write("Enter DB: ");
+        bw.flush();
+        DB = br.readLine();
 
-        while (USER=="") {
-            bw.write("Enter USER: ");
-            bw.flush();
-            USER = br.readLine();
-        }
+        bw.write("Enter USER: ");
+        bw.flush();
+        USER = br.readLine();
 
-        while (PASSWORD=="") {
-            bw.write("Enter PASSWORD: ");
-            bw.flush();
-            PASSWORD = br.readLine();
-        }
+        bw.write("Enter PASSWORD: ");
+        bw.flush();
+        PASSWORD = br.readLine();
 
         try {
             String URL = "jdbc:postgresql://" + IP + "/" + DB;
             connection = DriverManager.getConnection(URL, USER, PASSWORD);
 
-            bw.write("Connect!");
+            bw.write("Connect!\n\n");
             bw.flush();
         } catch (SQLException | IOException e) {
             e.printStackTrace();
         }
-        bw.close();
+
     }
 
     public Connection getConnection() {
