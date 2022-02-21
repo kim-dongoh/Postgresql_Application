@@ -15,7 +15,7 @@ public class Main {
 
             int select = Integer.parseInt(br.readLine());
             if (select == 1) {
-                
+
             } else if (select == 2) {
 
             } else if (select == 3) {
