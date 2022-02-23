@@ -9,6 +9,7 @@ public class connection {
 
     private static Connection connection;
     private static String IP;
+    private static String PORT;
     private static String DB;
     private static String USER;
     private static String PASSWORD;
@@ -17,6 +18,10 @@ public class connection {
         bw.write("Enter IP: ");
         bw.flush();
         IP = br.readLine();
+
+        bw.write("Enter PORT: ");
+        bw.flush();
+        PORT = br.readLine();
 
         bw.write("Enter DB: ");
         bw.flush();
@@ -31,11 +36,12 @@ public class connection {
         PASSWORD = br.readLine();
 
         try {
-            String URL = "jdbc:postgresql://" + IP + "/" + DB;
+            String URL = "jdbc:postgresql://" + IP + ":" + PORT + "/" + DB;
             connection = DriverManager.getConnection(URL, USER, PASSWORD);
 
             bw.write("Connect!\n\n");
             bw.flush();
+            bw.close();
         } catch (SQLException | IOException e) {
             e.printStackTrace();
         }
