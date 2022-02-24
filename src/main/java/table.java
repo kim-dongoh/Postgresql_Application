@@ -14,17 +14,15 @@ public class table {
 
     public void selectMenu (Connection connection) throws IOException, SQLException {
         while (true) {
-            bw.write("\n1. Create Table   2. Select Table   3. Delete Table   4. Exit\n");
+            bw.write("\n1. Create Table   2. Delete Table   3. Exit\n");
             bw.flush();
 
             int select = Integer.parseInt(br.readLine());
             if (select == 1) {
                 createTable(connection);
             } else if (select == 2) {
-                
+                deleteTable(connection);
             } else if (select == 3) {
-
-            } else if (select == 4) {
                 break;
             }
         }
@@ -41,7 +39,7 @@ public class table {
         bw.flush();
         TABLE_NAME = br.readLine();
 
-        bw.write("\nIf you want to end, enter \"exit\".\n");
+        bw.write("\n(If you want to end, enter \"exit\".)\n");
 
         while (true) {
             bw.write("Field" + count + " name: ");
@@ -74,5 +72,9 @@ public class table {
                 count++;
             }
         }
+    }
+
+    private void deleteTable (Connection connection) {
+        
     }
 }
