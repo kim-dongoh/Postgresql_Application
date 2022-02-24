@@ -15,37 +15,41 @@ public class connection {
     private static String PASSWORD;
 
     public void createConnection() throws IOException {
-        bw.write("Enter IP: ");
-        bw.flush();
-        IP = br.readLine();
-
-        bw.write("Enter PORT: ");
-        bw.flush();
-        PORT = br.readLine();
-
-        bw.write("Enter DB: ");
-        bw.flush();
-        DB = br.readLine();
-
-        bw.write("Enter USER: ");
-        bw.flush();
-        USER = br.readLine();
-
-        bw.write("Enter PASSWORD: ");
-        bw.flush();
-        PASSWORD = br.readLine();
-
-        try {
-            String URL = "jdbc:postgresql://" + IP + ":" + PORT + "/" + DB;
-            connection = DriverManager.getConnection(URL, USER, PASSWORD);
-
-            bw.write("Connect!\n\n");
+        while (true) {
+            bw.write("Enter IP: ");
             bw.flush();
-            bw.close();
-        } catch (SQLException | IOException e) {
-            e.printStackTrace();
-        }
+            IP = br.readLine();
 
+            bw.write("Enter PORT: ");
+            bw.flush();
+            PORT = br.readLine();
+
+            bw.write("Enter DB: ");
+            bw.flush();
+            DB = br.readLine();
+
+            bw.write("Enter USER: ");
+            bw.flush();
+            USER = br.readLine();
+
+            bw.write("Enter PASSWORD: ");
+            bw.flush();
+            PASSWORD = br.readLine();
+
+            try {
+                String URL = "jdbc:postgresql://" + IP + ":" + PORT + "/" + DB;
+                connection = DriverManager.getConnection(URL, USER, PASSWORD);
+
+                bw.write("Connect!\n\n");
+                bw.flush();
+
+
+                break;
+            } catch (SQLException | IOException e) {
+                bw.write("Error!\n\n");
+                bw.flush();
+            }
+        }
     }
 
     public Connection getConnection() {
