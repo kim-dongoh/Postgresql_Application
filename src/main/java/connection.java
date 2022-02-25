@@ -40,13 +40,13 @@ public class connection {
                 String URL = "jdbc:postgresql://" + IP + ":" + PORT + "/" + DB;
                 connection = DriverManager.getConnection(URL, USER, PASSWORD);
 
-                bw.write("Connect!\n\n");
+                bw.write("Connect!\n");
                 bw.flush();
 
 
                 break;
             } catch (SQLException | IOException e) {
-                bw.write("Error!\n\n");
+                bw.write("Error!\n");
                 bw.flush();
             }
         }

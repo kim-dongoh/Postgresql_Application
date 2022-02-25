@@ -14,7 +14,7 @@ public class Main {
         connection.createConnection();
 
         while (true) {
-            bw.write("1. Table   2. Data   3. Exit\n");
+            bw.write("\n1. Table   2. Data   3. Exit\n");
             bw.flush();
 
             int select = Integer.parseInt(br.readLine());

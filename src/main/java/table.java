@@ -60,11 +60,11 @@ public class table {
                     pstmt = connection.prepareStatement("CREATE TABLE " + TABLE_NAME + "(" + sql + ")");
                     pstmt.executeUpdate();
 
-                    bw.write("Create Table " + TABLE_NAME + "!\n\n");
+                    bw.write("<Create Table " + TABLE_NAME + "!>\n\n");
                     bw.flush();
                     break;
                 }
-            } else if (count == 1/* && (!fields.get(0).equals("exit") || !type.get(0).equals("exit"))*/) {     //처음 field가 추가 될 때, 입력값이 exit 가 아닌 경우
+            } else if (count == 1) {
                 sql = fields.get(count - 1) + " " + type.get(count - 1);
                 count++;
             } else {
@@ -74,7 +74,17 @@ public class table {
         }
     }
 
-    private void deleteTable (Connection connection) {
-        
+    private void deleteTable (Connection connection) throws IOException, SQLException {
+        String TABLE_NAME;
+
+        bw.write("Input your table name: ");
+        bw.flush();
+        TABLE_NAME = br.readLine();
+
+        pstmt = connection.prepareStatement("DROP TABLE " + TABLE_NAME);
+        pstmt.executeUpdate();
+
+        bw.write("<Delete Table " + TABLE_NAME + "!>\n");
+        bw.flush();
     }
 }
