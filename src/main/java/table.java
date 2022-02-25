@@ -10,7 +10,6 @@ public class table {
     BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
     private static PreparedStatement pstmt;
-    private static ResultSet rs;
 
     public void selectMenu (Connection connection) throws IOException, SQLException {
         while (true) {

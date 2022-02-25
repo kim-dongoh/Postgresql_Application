@@ -21,7 +21,7 @@ public class Main {
             if (select == 1) {
                 table.selectMenu(connection.getConnection());
             } else if (select == 2) {
-
+                data.selectMenu(connection.getConnection());
             } else if (select == 3) {
                 break;
             }
