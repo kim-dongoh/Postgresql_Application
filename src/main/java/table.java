@@ -52,7 +52,7 @@ public class table {
             bw.write("\n");
             bw.flush();
 
-            if (fields.get(count-1).equals("exit") || type.get(count-1).equals("exit")) {  //
+            if (fields.get(count-1).equals("exit") || type.get(count-1).equals("exit")) {
                 if (count == 1) {
                     break;
                 } else {
