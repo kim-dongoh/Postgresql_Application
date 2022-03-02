@@ -33,6 +33,7 @@ public class data {
         String sql;
         StringTokenizer token;
         ArrayList<String> data = new ArrayList<>();
+        ArrayList<String> type = new ArrayList<>();
         int count = 1;
 
         bw.write("\nInput your table name: ");
@@ -40,7 +41,7 @@ public class data {
         TABLE_NAME = br.readLine();
 
         //테이블 칼럼 정보 호출
-        bw.write("Table " + TABLE_NAME + "'s column Information\n");
+        bw.write("\nTable " + TABLE_NAME + "'s column Information\n");
         bw.flush();
 
         sql = "SELECT column_name, udt_name, character_maximum_length FROM information_schema.columns WHERE table_name = '" + TABLE_NAME + "';";
@@ -52,8 +53,7 @@ public class data {
             bw.write(rs.getString(1) + " " + rs.getString(2) + "(" + rs.getString(3) + ")" + "   ");
             bw.flush();
 
-            //2번 rs 가 가리키는 값들을 배열에 쭉 적어놓으면 각 필드마다 가지는 타입의 나열이 됨 그거 밑에서 for 문으로 읽으면서 하면 될듯?
-
+            type.add(rs.getString(2));
             count++;
         }
         bw.write("\n\n");
@@ -68,6 +68,8 @@ public class data {
                 data.add(token.nextToken());
             }
 
+
+            ////이 부분 ㅈㄴ 이해안가고 이상함.
             if (data.get(count).equals("exit")) {
                 data.clear();
                 rs.close();
